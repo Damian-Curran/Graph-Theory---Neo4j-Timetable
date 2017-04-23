@@ -17386,9 +17386,14 @@ ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 ffffffffffffffffffff00030000000000
 }}}\ulnone\fs28\par
 This previous design was flawed as i hadn't included the years of the course nor labels, relationship labels.\par
-I thought of creating a time node for each hour in the day but decided to create hours as relationship labels instead, this saves lines of code and makes the visualisation of the database much cleaner.\ul\fs44\par
+I thought of creating a time node for each hour in the day but decided to create hours as relationship labels instead, this saves lines of code and makes the visualisation of the database much cleaner.\par
+Created the course node, 4 year nodes with relationship label  "Year_Off"\ul\fs44\par
 Code Samples\par
-\par
+\fs24 Create Course and 1 of the years\ulnone\fs28\par
+\fs20 CREATE(SoftwareDevelopment:Course \{title:'Software Development'\})\par
+CREATE(Year1:Year \{name:'Year1'\})\par
+CREATE(Year1)-[:Year_Of \{Year:['1']\}]->(SoftwareDevelopment)\ul\par
+\fs44\par
 Sources\par
 \ulnone\fs22\par
 }
