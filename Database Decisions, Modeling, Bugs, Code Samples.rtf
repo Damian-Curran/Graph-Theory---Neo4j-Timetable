@@ -17388,10 +17388,12 @@ ffffffffffffffffffff00030000000000
 This previous design was flawed as i hadn't included the years of the course nor labels, relationship labels.\par
 I thought of creating a time node for each hour in the day but decided to create hours as relationship labels instead, this saves lines of code and makes the visualisation of the database much cleaner.\par
 Created a lecture node for each module node, as all students in the year attend lectures, not just some groups.\par
+Had planned on making the relationship label the time of lecture but instead used string "Time" as this puts all the times under one label in the database rather than having hundreds of different single type labels.\par
 \ul\fs44 Programming Timetable\ulnone\fs28\par
 Created the course node, 4 year nodes with relationship label  "Year_Of"\par
 Created the Modules for the Year with relationship label  "Module_Of"\par
 Created the Lectures for each Module with relationship label "Lecture_Of"\par
+Created the Room/Day for each Lecture with relationship labels "Time", "Location"\par
 \ul\fs44\par
 Code Samples\par
 \fs24 Create Course and 1 of the years\ulnone\fs28\par
@@ -17408,6 +17410,13 @@ CREATE(SoftwareDesign)-[:Module_Of]->(Year1)\par
 \ulnone\fs20 Match(SoftwareDesign:Module \{name:'Software Design'\})\par
 CREATE(SoftwareDesignL:Lecture \{name:'Software Design Lecture'\})\par
 CREATE(SoftwareDesignL)-[:Lecture_Of]->(SoftwareDesign)\par
+\par
+\ul\fs24 Create Room/Day\ulnone\fs20\par
+MATCH(SoftwareDesignL:Lecture \{name:'Software Design Lecture'\})\par
+CREATE(r941:Room \{name:'941'\})\par
+CREATE(Monday:Day \{name:'Monday'\})\par
+CREATE(SoftwareDesignL)-[:Location]->(r941)\par
+CREATE(SoftwareDesignL)-[:Time \{Hours:["11:00 - 12:00"]\}]->(Monday)\par
 \ul\fs44\par
 Sources\par
 \ulnone\fs22\par
