@@ -17389,6 +17389,7 @@ This previous design was flawed as i hadn't included the years of the course nor
 I thought of creating a time node for each hour in the day but decided to create hours as relationship labels instead, this saves lines of code and makes the visualisation of the database much cleaner.\par
 Created a lecture node for each module node, as all students in the year attend lectures, not just some groups.\par
 Had planned on making the relationship label the time of lecture but instead used string "Time" as this puts all the times under one label in the database rather than having hundreds of different single type labels.\par
+When I was attempting to use integers or non rel type words as a label I had issues finding the correct way to do it, I tried " and ' but eventually realised ` was the correct annotation.\par
 \ul\fs44 Programming Timetable\ulnone\fs28\par
 \fs24 Created the course node, 4 year nodes with relationship label  "Year_Of"\par
 Created the Modules for the Year with relationship label  "Module_Of"\par
