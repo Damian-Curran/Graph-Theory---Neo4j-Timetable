@@ -17394,30 +17394,34 @@ Created the course node, 4 year nodes with relationship label  "Year_Of"\par
 Created the Modules for the Year with relationship label  "Module_Of"\par
 Created the Lectures for each Module with relationship label "Lecture_Of"\par
 Created the Room/Day for each Lecture with relationship labels "Time", "Location"\par
-\ul\fs44\par
+Create Lecturers for each Module with relationship type "Teaches"\ul\fs44\par
 Code Samples\par
-\fs24 Create Course and 1 of the years\ulnone\fs28\par
+\fs24 Create Course and 1 of the years/Relationships\ulnone\fs28\par
 \fs20 CREATE(SoftwareDevelopment:Course \{title:'Software Development'\})\par
 CREATE(Year1:Year \{name:'Year1'\})\par
 CREATE(Year1)-[:Year_Of \{Year:['1']\}]->(SoftwareDevelopment)\par
 \par
-\ul\fs24 Create Modules\ulnone\fs20\par
+\ul\fs24 Create Modules/Relationships\ulnone\fs20\par
 MATCH(Year1:Year \{name:'Year1'\})\par
 CREATE(SoftwareDesign:Module \{name:'Software Design'\})\par
 CREATE(SoftwareDesign)-[:Module_Of]->(Year1)\par
 \ul\par
-\fs24 Create Lectures\par
+\fs24 Create Lectures/Relationships\par
 \ulnone\fs20 Match(SoftwareDesign:Module \{name:'Software Design'\})\par
 CREATE(SoftwareDesignL:Lecture \{name:'Software Design Lecture'\})\par
 CREATE(SoftwareDesignL)-[:Lecture_Of]->(SoftwareDesign)\par
 \par
-\ul\fs24 Create Room/Day\ulnone\fs20\par
+\ul\fs24 Create Lecture Room/Day/Relationships\ulnone\fs20\par
 MATCH(SoftwareDesignL:Lecture \{name:'Software Design Lecture'\})\par
 CREATE(r941:Room \{name:'941'\})\par
 CREATE(Monday:Day \{name:'Monday'\})\par
 CREATE(SoftwareDesignL)-[:Location]->(r941)\par
 CREATE(SoftwareDesignL)-[:Time \{Hours:["11:00 - 12:00"]\}]->(Monday)\par
-\ul\fs44\par
+\par
+\ul\fs24 Create Lecturer/Relationships\ulnone\fs20\par
+Match(SoftwareDesign:Module \{name:'Software Design'\})\par
+CREATE(GerryAgnew:Lecturer \{name:'Gerry Agnew'\})\par
+CREATE(GerryAgnew)-[:Teaches]->(SoftwareDesign)\ul\fs44\par
 Sources\par
 \ulnone\fs22\par
 }
